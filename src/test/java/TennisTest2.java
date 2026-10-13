@@ -76,5 +76,12 @@ public class TennisTest2 {
         assertEquals("Fifteen-Love", game.getScore());
     }
 
-
+    @Test
+    void scoreUsesRealPlayerNames() {
+        TennisGame2 game = new TennisGame2("Nadal", "Federer");
+        for (int i = 0; i < 4; i++) {
+            game.wonPoint("Federer");
+        }
+        assertEquals("Win for Federer", game.getScore());
+    }
 }
