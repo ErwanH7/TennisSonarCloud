@@ -3,6 +3,7 @@ import org.junit.jupiter.params.ParameterizedTest;
 
 import java.util.stream.Stream;
 
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import org.junit.jupiter.params.provider.MethodSource;
 
@@ -83,5 +84,11 @@ public class TennisTest2 {
             game.wonPoint("Federer");
         }
         assertEquals("Win for Federer", game.getScore());
+    }
+
+    @Test
+    void wonPointRejectsUnknownPlayer() {
+        TennisGame2 game = new TennisGame2("Nadal", "Federer");
+        assertThrows(IllegalArgumentException.class, () -> game.wonPoint("Djokovic"));
     }
 }

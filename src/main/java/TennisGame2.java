@@ -127,9 +127,12 @@ public class TennisGame2 implements TennisGame
     }
 
     public void wonPoint(String player) {
-        if (player1Name.equals(player))
+        if (player1Name.equals(player)) {
             P1Score();
-        else
+        } else if (player2Name.equals(player)) {
             P2Score();
+        } else {
+            throw new IllegalArgumentException("Joueur inconnu : " + player);
+        }
     }
 }
