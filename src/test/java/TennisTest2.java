@@ -1,3 +1,4 @@
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 
 import java.util.stream.Stream;
@@ -66,6 +67,13 @@ public class TennisTest2 {
     public void checkAllScoresTennisGame2(int player1Points, int player2Points, String expectedScore) {
         TennisGame2 game = new TennisGame2("player1", "player2");
         checkAllScores(player1Points, player2Points, expectedScore, game);
+    }
+
+    @Test
+    void wonPointComparesNamesByValueNotByReference() {
+        TennisGame2 game = new TennisGame2("Nadal", "Federer");
+        game.wonPoint(new String("Nadal"));
+        assertEquals("Fifteen-Love", game.getScore());
     }
 
 
